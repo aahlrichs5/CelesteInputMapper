@@ -1,0 +1,1 @@
+restart,h 200,wr 35,jr 45,h 10,jr,h,jr,h 10,jr,wr 20,jr,h 10,jr 60,wr 20,h 60,wr 35,jr 45,gw,wu 80,wr 20,jr,h 20,wr 10,jr,wu 60,wr 60,jr,wu 10,jr,wu 45,wr,rw,h 60,wr,jr,h 10,jr,wr,h 30,skip,wr 60,h 60,wr 310,jr,wr 180,jr,h 30,skip

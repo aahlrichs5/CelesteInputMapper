@@ -101,53 +101,65 @@ def dash_left(direction, amount):
         keyboard.release('s')
         keyboard.release('x')
 
+#menu and dialog key commands
+def press_c():
+    keyboard.press('c')
+    time.sleep(0.5)
+    keyboard.release('c')
+
+def press_x():
+    keyboard.press('x')
+    time.sleep(0.5)
+    keyboard.release('x')
+
+def press_up():
+    keyboard.press(keyboard._Key.up)
+    time.sleep(0.25)
+    keyboard.release(keyboard._Key.up)
+
+def press_down():
+    keyboard.press(keyboard._Key.down)
+    time.sleep(0.25)
+    keyboard.release(keyboard._Key.down)
+
+def skip_dialogue():
+    keyboard.press(keyboard._Key.esc)
+    time.sleep(0.5)
+    keyboard.release(keyboard._Key.esc)
+    press_down()
+    press_c()
+
+
 #retry
 def retry():
     keyboard.press(keyboard._Key.f3)
-    time.sleep(0.5)
+    time.sleep(0.75)
     keyboard.release(keyboard._Key.f3)
 
 #restart chapter
 def restart():
-    keyboard.press(keyboard._Key.esc)
-    time.sleep(0.5)
-    keyboard.release(keyboard._Key.esc)
-    keyboard.press(keyboard._Key.up)
-    time.sleep(0.45)
-    keyboard.release(keyboard._Key.up)
-    time.sleep(0.75)
-    keyboard.press('c')
-    time.sleep(0.5)
-    keyboard.release('c')
-    time.sleep(0.75)
-    keyboard.press('c')
-    time.sleep(0.5)
-    keyboard.release('c')
+    keyboard.press('r')
+    time.sleep(0.25)
+    press_c()
 
 def go_to_map():
     keyboard.press(keyboard._Key.esc)
     time.sleep(0.5)
     keyboard.release(keyboard._Key.esc)
-    keyboard.press(keyboard._Key.up)
+    press_up()
+    time.sleep(0.75)
+    press_c()
     time.sleep(0.25)
-    keyboard.release(keyboard._Key.up)
-    time.sleep(0.75)
-    keyboard.press('c')
-    time.sleep(0.5)
-    keyboard.release('c')
-    time.sleep(0.75)
-    keyboard.press('c')
-    time.sleep(0.5)
-    keyboard.release('c')
+    press_c()
 
 def save_and_quit():
     keyboard.press(keyboard._Key.esc)
     time.sleep(0.5)
     keyboard.release(keyboard._Key.esc)
-    keyboard.press(keyboard._Key.up)
-    time.sleep(0.55)
-    keyboard.release(keyboard._Key.up)
-    time.sleep(0.75)
-    keyboard.press('c')
-    time.sleep(0.5)
-    keyboard.release('c')
+    press_up()
+    time.sleep(0.25)
+    press_up()
+    time.sleep(0.25)
+    press_up()
+    time.sleep(0.25)
+    press_c()
