@@ -22,6 +22,32 @@ def walk(direction, amount):
         time.sleep(amount)
         keyboard.release('w')
 
+def walk_diagonal(direction, amount):
+    if direction =='wdr':
+        keyboard.press('s')
+        keyboard.press('d')
+        time.sleep(amount)
+        keyboard.release('s')
+        keyboard.release('d')
+    elif direction =='wdl':
+        keyboard.press('s')
+        keyboard.press('a')
+        time.sleep(amount)
+        keyboard.release('s')
+        keyboard.release('a')
+    elif direction == 'wur':
+        keyboard.press('w')
+        keyboard.press('d')
+        time.sleep(amount)
+        keyboard.release('w')
+        keyboard.release('d')
+    elif direction == 'wul':
+        keyboard.press('w')
+        keyboard.press('a')
+        time.sleep(amount)
+        keyboard.release('w')
+        keyboard.release('a')
+
 def jump(direction, amount):
     if direction == "ju":
         keyboard.press('w')
@@ -50,10 +76,24 @@ def grab_wall():
 def release_wall():
     keyboard.release('z')
     
+#dash up and down inputs
+def dash_up_down(direction, amount):
+    if direction == 'dau':
+        keyboard.press('w')
+        keyboard.press('x')
+        time.sleep(amount)
+        keyboard.release('w')
+        keyboard.release('x')
+    elif direction == 'dad':
+        keyboard.press('s')
+        keyboard.press('x')
+        time.sleep(amount)
+        keyboard.release('s')
+        keyboard.release('x')
 
 #dash right inputs
 def dash_right(direction, amount):
-    if direction == "dal":
+    if direction == "dar":
         keyboard.press('d')
         keyboard.press('x')
         time.sleep(amount)
@@ -135,12 +175,15 @@ def retry():
     keyboard.press(keyboard._Key.f3)
     time.sleep(0.75)
     keyboard.release(keyboard._Key.f3)
+    time.sleep(1.0)
 
 #restart chapter
 def restart():
     keyboard.press('r')
     time.sleep(0.25)
+    keyboard.release('r')
     press_c()
+    time.sleep(3.0)
 
 def go_to_map():
     keyboard.press(keyboard._Key.esc)

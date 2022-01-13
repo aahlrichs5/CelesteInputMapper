@@ -5,16 +5,18 @@ Run the program's main file and begin inputting commands to make Madeline move. 
 
 # Movement Commands
 
-- wr | wl
-  - Walks right or left
+- wr | wl | wu | wd
+  - Walks right | left | up | down
+- dau | dad
+  - Dashes up | down
 - dar | dal
-  - Dashes right or left
+  - Dashes right | left
 - daur | daul
-  - Dashes up and right or up and left
+  - Dashes up and right | up and left
 - dadr | dadl
-  - Dashes down and right or down and left
+  - Dashes down and right | down and left
 - ju | jr | jl
-  - Jumps up, left, or right
+  - Jumps up | left | right
 - h
   - Holds the current position (pauses input)
 - gw

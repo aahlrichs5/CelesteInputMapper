@@ -49,12 +49,17 @@ def process_input(command):
     #walking
     elif direction == 'wr' or direction == 'wl' or direction == 'wd' or direction == 'wu':
         walk(direction, amount)
+    elif direction == 'wur' or direction == 'wul' or direction == 'wdr' or direction == 'wul':
+        walk_diagonal(direction, amount)
     #jumping
     elif direction == 'ju' or direction == 'jr' or direction == 'jl':
         jump(direction, amount)
     #hold in place
     elif direction == "h":
         time.sleep(amount)
+    #up or down dash
+    elif direction == 'dau' or direction == 'dad':
+        dash_up_down(direction, amount)
     #right dashes
     elif direction == 'dar' or direction == "daur" or direction == "dadr":
         dash_right(direction, amount)
