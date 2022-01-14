@@ -1,12 +1,14 @@
 # CelesteInputMapper
 
 A program that reads inputs and converts them to keystrokes for the game Celeste.
-Run the program's main file and begin inputting commands to make Madeline move. Be sure to tab into the game within the sleep time window so that commands will be registered by the game. When finished with the program input 'Q' to terminate it.
+Run the program by running 'CelesteInputMapper.exe' and begin inputting commands to make Madeline move. Be sure to tab into the game within the sleep time window so that commands will be registered by the game. When finished with the program input 'Q' to terminate it.
 
 # Movement Commands
 
 - wr | wl | wu | wd
   - Walks right | left | up | down
+- wur | wul | wdr | wdl
+  - Walks up and right | up and left | down and right | down and left
 - dau | dad
   - Dashes up | down
 - dar | dal
@@ -50,6 +52,7 @@ Run the program's main file and begin inputting commands to make Madeline move. 
 # Example Movement Commands
 
 - Time in movements
+  - Game runs at 60fps
   - All movements without times are default 30 frames (0.5 seconds)
   - By adding a number you may specify the amount of frames to do the move for
 - wl
