@@ -1,5 +1,3 @@
-import time
-
 from input_reader import *
 from moves import *
 
@@ -9,7 +7,7 @@ def main():
     command_list = read_input()
 
     #allow time to alt tab back in
-    time.sleep(3)
+    sleep(3)
 
     #while taking input
     while command_list[0] != 'q':
@@ -23,7 +21,7 @@ def main():
         #taking input
         command_list = read_input()
         #allow time to alt tab back in
-        time.sleep(3)
+        sleep(3)
 
 main()
 

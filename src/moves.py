@@ -3,48 +3,53 @@ import time
 
 keyboard = Controller()
 
+#custom sleep function for not needing to call time.sleep everywhere
+#also allows me to refactor this in the future
+def sleep(amount):
+    time.sleep(amount)
+
 #walk inputs
 def walk(direction, amount):
     if direction == 'wr':
         keyboard.press('d')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('d')
     elif direction =='wl':
         keyboard.press('a')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('a')
     elif direction =='wd':
         keyboard.press('s')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('s')
     elif direction == 'wu':
         keyboard.press('w')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('w')
 
 def walk_diagonal(direction, amount):
     if direction =='wdr':
         keyboard.press('s')
         keyboard.press('d')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('s')
         keyboard.release('d')
     elif direction =='wdl':
         keyboard.press('s')
         keyboard.press('a')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('s')
         keyboard.release('a')
     elif direction == 'wur':
         keyboard.press('w')
         keyboard.press('d')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('w')
         keyboard.release('d')
     elif direction == 'wul':
         keyboard.press('w')
         keyboard.press('a')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('w')
         keyboard.release('a')
 
@@ -52,19 +57,19 @@ def jump(direction, amount):
     if direction == "ju":
         keyboard.press('w')
         keyboard.press('c')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('w')
         keyboard.release('c')
     elif direction == "jr":
         keyboard.press('d')
         keyboard.press('c')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('d')
         keyboard.release('c')
     elif direction == "jl":
         keyboard.press('a')
         keyboard.press('c')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('a')
         keyboard.release('c')
 
@@ -81,13 +86,13 @@ def dash_up_down(direction, amount):
     if direction == 'dau':
         keyboard.press('w')
         keyboard.press('x')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('w')
         keyboard.release('x')
     elif direction == 'dad':
         keyboard.press('s')
         keyboard.press('x')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('s')
         keyboard.release('x')
 
@@ -96,14 +101,14 @@ def dash_right(direction, amount):
     if direction == "dar":
         keyboard.press('d')
         keyboard.press('x')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('d')
         keyboard.release('x')
     elif direction == "daur":
         keyboard.press('d')
         keyboard.press('w')
         keyboard.press('x')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('d')
         keyboard.release('w')
         keyboard.release('x')
@@ -111,7 +116,7 @@ def dash_right(direction, amount):
         keyboard.press('d')
         keyboard.press('s')
         keyboard.press('x')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('d')
         keyboard.release('s')
         keyboard.release('x')
@@ -121,14 +126,14 @@ def dash_left(direction, amount):
     if direction == 'dal':
         keyboard.press('a')
         keyboard.press('x')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('a')
         keyboard.release('x')
     elif direction == "daul":
         keyboard.press('a')
         keyboard.press('w')
         keyboard.press('x')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('a')
         keyboard.release('w')
         keyboard.release('x')
@@ -136,7 +141,7 @@ def dash_left(direction, amount):
         keyboard.press('a')
         keyboard.press('s')
         keyboard.press('x')
-        time.sleep(amount)
+        sleep(amount)
         keyboard.release('a')
         keyboard.release('s')
         keyboard.release('x')
@@ -144,27 +149,27 @@ def dash_left(direction, amount):
 #menu and dialog key commands
 def press_c():
     keyboard.press('c')
-    time.sleep(0.5)
+    sleep(0.5)
     keyboard.release('c')
 
 def press_x():
     keyboard.press('x')
-    time.sleep(0.5)
+    sleep(0.5)
     keyboard.release('x')
 
 def press_up():
     keyboard.press(keyboard._Key.up)
-    time.sleep(0.25)
+    sleep(0.25)
     keyboard.release(keyboard._Key.up)
 
 def press_down():
     keyboard.press(keyboard._Key.down)
-    time.sleep(0.25)
+    sleep(0.25)
     keyboard.release(keyboard._Key.down)
 
 def skip_dialogue():
     keyboard.press(keyboard._Key.esc)
-    time.sleep(0.5)
+    sleep(0.5)
     keyboard.release(keyboard._Key.esc)
     press_down()
     press_c()
@@ -173,36 +178,36 @@ def skip_dialogue():
 #retry
 def retry():
     keyboard.press(keyboard._Key.f3)
-    time.sleep(0.75)
+    sleep(0.75)
     keyboard.release(keyboard._Key.f3)
-    time.sleep(1.0)
+    sleep(1.0)
 
 #restart chapter
 def restart():
     keyboard.press('r')
-    time.sleep(0.25)
+    sleep(0.25)
     keyboard.release('r')
     press_c()
-    time.sleep(3.0)
+    sleep(3.0)
 
 def go_to_map():
     keyboard.press(keyboard._Key.esc)
-    time.sleep(0.5)
+    sleep(0.5)
     keyboard.release(keyboard._Key.esc)
     press_up()
-    time.sleep(0.75)
+    sleep(0.75)
     press_c()
-    time.sleep(0.25)
+    sleep(0.25)
     press_c()
 
 def save_and_quit():
     keyboard.press(keyboard._Key.esc)
-    time.sleep(0.5)
+    sleep(0.5)
     keyboard.release(keyboard._Key.esc)
     press_up()
-    time.sleep(0.25)
+    sleep(0.25)
     press_up()
-    time.sleep(0.25)
+    sleep(0.25)
     press_up()
-    time.sleep(0.25)
+    sleep(0.25)
     press_c()
