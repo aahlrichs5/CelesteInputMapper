@@ -3,6 +3,8 @@
 A program that reads inputs and converts them to keystrokes for the game Celeste.
 Run the program by running 'CelesteInputMapper.exe' and begin inputting commands to make Madeline move. Be sure to tab into the game within the sleep time window so that commands will be registered by the game. When finished with the program input 'Q' to terminate it.
 
+[Level 1a](https://www.youtube.com/watch?v=rKgTP7W3dJU)
+
 # Movement Commands
 
 - wr | wl | wu | wd
