@@ -1,0 +1,5 @@
+# First map by Leftyy room 1
+rw,retry,wr 10,ju,dar,wur 20,daur 15,wr 25,gw,ju 20,wl 15,wu,jr,wr,daur,wur 60,h,wr,h 15,wr 15,rw,h 15,dau 10,gw,wur 60,wr 120,rw
+
+#Strawberry room
+retry,jl 10,daul 25,h 20,daul 20,h 25,dau,wr 5,h 10,dal 10,h 20,daul
