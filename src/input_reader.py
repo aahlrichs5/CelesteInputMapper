@@ -5,10 +5,6 @@ def read_input():
     commands = input()
     return commands.split(',')
 
-#process the string to return the current command
-def process_single_command(single_command):
-    return single_command.split(' ')
-
 #converts frames to time for sleeping
 def convert_time(frames):
     return frames / 60
@@ -19,10 +15,15 @@ def fix_spaces(command):
         if command[0] == '':
             del command[0]
 
+def loop_input(command_list):
+    for spot in command_list:
+        current_command = spot.split(' ')
+
+        process_input(current_command)
+
 
 #main method to process input commands and the directions a user inputs
 def process_input(command):
-
     #since I like to misinput commands here is a hacky fix to replace empty spaces in front of lines...
     if command[0] == '':
         fix_spaces(command)

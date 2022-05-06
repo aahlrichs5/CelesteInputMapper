@@ -12,10 +12,7 @@ def main():
     #while taking input
     while command_list[0] != 'q':
         #loop through commands
-        for spot in command_list:
-            current_command = spot.split(' ')
-
-            process_input(current_command)
+        loop_input(command_list)
             
 
         #taking input
