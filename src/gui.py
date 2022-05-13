@@ -23,14 +23,14 @@ class Window(QMainWindow):
         self.setFixedSize(width, height)
 
         # open a txt file
-        self.input_file_button = QPushButton("Open .txt File", self)
+        self.input_file_button = QPushButton("Open Text File", self)
         self.input_file_button.move(775, 25)
         self.input_file_button.clicked.connect(self.open_file_explorer)
 
         # save a txt file
-        self.input_file_button = QPushButton("Open Text File", self)
-        self.input_file_button.move(775, 25)
-        self.input_file_button.clicked.connect(self.open_file_explorer)
+        self.input_file_button = QPushButton("Save Text File", self)
+        self.input_file_button.move(775, 75)
+        self.input_file_button.clicked.connect(self.save_file)
 
         # input textbox
         self.input_box = QTextEdit(self)
@@ -62,10 +62,30 @@ class Window(QMainWindow):
         root = tkinter.Tk()
         root.withdraw()
 
-        input_file = open(filedialog.askopenfilename(), 'r')
-        input = input_file.read()
+        try: 
+            input_file = open(filedialog.askopenfilename(), 'r')
+            input = input_file.read()
+            self.fill_input_box(self, input)
+            input_file.close()
+        except:
+            print("Was not able to open file")
 
-        self.fill_input_box(self, input)
+    def save_file(self):
+        root = tkinter.Tk()
+        root.withdraw()
+
+        Files = [('Text Document', '*.txt'),
+			        ('Markdown File', '*.md'),
+                    ('All Files', '*.*')]
+
+        text = self.input_box.toPlainText()
+
+        try:
+            text_file = open(filedialog.asksaveasfilename(filetypes = Files, defaultextension = Files), 'w')
+            text_file.write(text)
+            text_file.close()
+        except:
+            print("Was not able to save file")
 
     def fill_input_box(self, window, input):
         self.input_box.clear()
