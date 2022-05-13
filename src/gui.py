@@ -2,14 +2,15 @@
 from PyQt6 import QtCore
 from PyQt6 import QtGui
 from PyQt6.QtWidgets import * 
+from tkinter import filedialog
 import pyperclip
 import sys
 import tkinter
-from tkinter import filedialog
+import win32gui
 
 from input_reader import loop_input
-  
-  
+
+
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -101,12 +102,22 @@ class Window(QMainWindow):
         pyperclip.copy(input)
 
     def confirm_button_clicked(self):
+        try:
+            self.focus_celeste()
+        except:
+            print("Was not able to focus Celeste")
+            return;
+
         input = self.input_box.toPlainText()
         input = input.split(',')
         try:
             loop_input(input)
         except:
             print("Was unable to process input")
+
+    def focus_celeste(self):
+        window = win32gui.FindWindow(None, "Celeste")
+        win32gui.SetForegroundWindow(window)
   
 
 # create pyqt6 app
