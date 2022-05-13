@@ -55,7 +55,10 @@ class Window(QMainWindow):
   
         # show the window
         self.show()
-        
+
+    Files = [('Text Document', '*.txt'),
+			        ('Markdown File', '*.md'),
+                    ('All Files', '*.*')] 
 
     # helper funtions
     def open_file_explorer(self):
@@ -63,7 +66,7 @@ class Window(QMainWindow):
         root.withdraw()
 
         try: 
-            input_file = open(filedialog.askopenfilename(), 'r')
+            input_file = open(filedialog.askopenfilename(filetypes = self.Files, defaultextension = self.Files), 'r')
             input = input_file.read()
             self.fill_input_box(self, input)
             input_file.close()
@@ -74,14 +77,10 @@ class Window(QMainWindow):
         root = tkinter.Tk()
         root.withdraw()
 
-        Files = [('Text Document', '*.txt'),
-			        ('Markdown File', '*.md'),
-                    ('All Files', '*.*')]
-
         text = self.input_box.toPlainText()
 
         try:
-            text_file = open(filedialog.asksaveasfilename(filetypes = Files, defaultextension = Files), 'w')
+            text_file = open(filedialog.asksaveasfilename(filetypes = self.Files, defaultextension = self.Files), 'w')
             text_file.write(text)
             text_file.close()
         except:
@@ -109,7 +108,7 @@ class Window(QMainWindow):
         except:
             print("Was unable to process input")
   
-  
+
 # create pyqt6 app
 App = QApplication(sys.argv)
   
