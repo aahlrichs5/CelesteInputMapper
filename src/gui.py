@@ -1,5 +1,4 @@
  
-from PyQt6 import QtCore
 from PyQt6 import QtGui
 from PyQt6.QtWidgets import * 
 from tkinter import filedialog
