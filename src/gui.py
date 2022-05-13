@@ -18,39 +18,39 @@ class Window(QMainWindow):
         self.setWindowIcon(QtGui.QIcon('assets\inputmapper.png'))
         self.setWindowTitle("Celeste Input Mapper")
   
-        width = 1280
-        height = 720
+        width = 525
+        height = 650
         self.setFixedSize(width, height)
 
         # open a txt file
         self.input_file_button = QPushButton("Open Text File", self)
-        self.input_file_button.move(775, 25)
+        self.input_file_button.move(400, 25)
         self.input_file_button.clicked.connect(self.open_file_explorer)
 
         # save a txt file
         self.input_file_button = QPushButton("Save Text File", self)
-        self.input_file_button.move(775, 75)
+        self.input_file_button.move(400, 75)
         self.input_file_button.clicked.connect(self.save_file)
 
         # input textbox
         self.input_box = QTextEdit(self)
-        self.input_box.move(900, 25)
+        self.input_box.move(20, 25)
         self.input_box.resize(350, 600)
         self.input_box.setLineWrapColumnOrWidth(350)
 
         # clear inputs button
         self.clear_button = QPushButton("Clear Inputs", self)
-        self.clear_button.move(900, 650)
+        self.clear_button.move(400, 497)
         self.clear_button.clicked.connect(self.clear_input_box)
 
         # copy inputs button
         self.copy_button = QPushButton("Copy Text", self)
-        self.copy_button.move(1025, 650)
+        self.copy_button.move(400, 547)
         self.copy_button.clicked.connect(self.copy_input_box)
 
         # confirm inputs button
         self.confirm_button = QPushButton("Confirm Moves", self)
-        self.confirm_button.move(1150, 650)
+        self.confirm_button.move(400, 597)
         self.confirm_button.clicked.connect(self.confirm_button_clicked)
   
         # show the window
