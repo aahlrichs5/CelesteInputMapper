@@ -103,6 +103,7 @@ class Window(QMainWindow):
             self.dialog_label.setText("Did not open file or there was a problem opening the file")
 
     def clear_input_box(self):
+        self.input_box.clear()
         self.dialog_label.setText("Text cleared")
 
     def copy_input_box(self):
