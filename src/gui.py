@@ -1,5 +1,5 @@
  
-from PyQt6 import QtGui
+from PyQt6 import QtCore, QtGui
 from PyQt6.QtWidgets import * 
 from tkinter import filedialog
 import pyperclip
@@ -22,6 +22,12 @@ class Window(QMainWindow):
         height = 650
         self.setFixedSize(width, height)
 
+        # input textbox
+        self.input_box = QTextEdit(self)
+        self.input_box.move(20, 25)
+        self.input_box.resize(350, 600)
+        self.input_box.setLineWrapColumnOrWidth(350)
+
         # open a txt file
         self.input_file_button = QPushButton("Open Text File", self)
         self.input_file_button.move(400, 25)
@@ -32,11 +38,11 @@ class Window(QMainWindow):
         self.input_file_button.move(400, 75)
         self.input_file_button.clicked.connect(self.save_file)
 
-        # input textbox
-        self.input_box = QTextEdit(self)
-        self.input_box.move(20, 25)
-        self.input_box.resize(350, 600)
-        self.input_box.setLineWrapColumnOrWidth(350)
+        self.dialog_label = QLabel("", self)
+        self.dialog_label.move(375, 125)
+        self.dialog_label.resize(145, 360)
+        self.dialog_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
+        self.dialog_label.setWordWrap(True)
 
         # clear inputs button
         self.clear_button = QPushButton("Clear Inputs", self)
@@ -62,6 +68,7 @@ class Window(QMainWindow):
 
     # helper funtions
     def open_file_explorer(self):
+        self.clear_dialog_label()
         root = tkinter.Tk()
         root.withdraw()
 
@@ -71,9 +78,10 @@ class Window(QMainWindow):
             self.fill_input_box(self, input)
             input_file.close()
         except:
-            print("Was not able to open file")
+            self.dialog_label.setText("Did not open file or there was a problem opening the file")
 
     def save_file(self):
+        self.clear_dialog_label()
         root = tkinter.Tk()
         root.withdraw()
 
@@ -84,39 +92,46 @@ class Window(QMainWindow):
             text_file.write(text)
             text_file.close()
         except:
-            print("Was not able to save file")
+            self.dialog_label.setText("Did not save file or there was a problem saving the file")
 
     def fill_input_box(self, window, input):
+        self.clear_dialog_label()
         self.input_box.clear()
         try:
             self.input_box.setPlainText(input)
         except:
-            print("Was not able to open file")
+            self.dialog_label.setText("Did not open file or there was a problem opening the file")
 
     def clear_input_box(self):
-        self.input_box.clear()
+        self.dialog_label.setText("Text cleared")
 
     def copy_input_box(self):
         input = self.input_box.toPlainText()
         pyperclip.copy(input)
+        self.dialog_label.setText("Text copied to clipboard")
 
     def confirm_button_clicked(self):
         try:
             self.focus_celeste()
         except:
-            print("Was not able to focus Celeste")
+            self.dialog_label.setText("Was not able to focus Celeste")
             return;
 
         input = self.input_box.toPlainText()
         input = input.split(',')
         try:
+            self.dialog_label.setText("Executing commands...")
             loop_input(input)
         except:
-            print("Was unable to process input")
+            self.dialog_label.setText("Was unable to process input")
 
     def focus_celeste(self):
+        self.clear_dialog_label()
         window = win32gui.FindWindow(None, "Celeste")
         win32gui.SetForegroundWindow(window)
+
+    def clear_dialog_label(self):
+        self.dialog_label.setText("")
   
 
 # create pyqt6 app
