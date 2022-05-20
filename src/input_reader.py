@@ -9,11 +9,28 @@ def read_input():
 def convert_time(frames):
     return frames / 60
 
+#loop to delete new line chars I accidentally input sometimes
+def fix_new_lines(command):
+    for spot in command:
+        index = command.index(spot)
+        if spot == '\n':
+            del command[index]
+        elif ('\n' in spot):
+            command[index] = command[index].replace('\n', '')
+    
+    if('\n' in command[0]):
+        fix_new_lines(command)
+
 #loop to delete the spaces I accidentally input sometimes
 def fix_spaces(command):
-    for spaces in command:
-        if command[0] == '':
-            del command[0]
+    for spot in command:
+        if spot == '' or spot == ' ':
+            index = command.index(spot)
+            del command[index]
+
+    if(command[0] == ''):
+        fix_spaces(command)
+
 
 def loop_input(command_list):
     for spot in command_list:
@@ -24,9 +41,10 @@ def loop_input(command_list):
 
 #main method to process input commands and the directions a user inputs
 def process_input(command):
-    #since I like to misinput commands here is a hacky fix to replace empty spaces in front of lines...
-    if command[0] == '':
-        fix_spaces(command)
+    #since I like to misinput commands here is a VERY hacky fix to replace empty spaces in front of lines...
+    fix_new_lines(command)
+    fix_spaces(command)
+        
 
     direction = command [0]
 
